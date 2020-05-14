@@ -4,55 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Timed Code Quiz</title>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-
-  <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">
-        <img
-          src="vanessa-navbar.png"
-          width="30"
-          height="30"
-          class="d-inline-block align-top"
-          alt=""
-        />Timed Code Quiz</a>
-    </nav>
-    
-    <!-- Start Button -->
-    <div class="controls">
-       <button id="start-btn" class="start-btn btn">Let's Go</button>
-    </div>
-
-    <!-- Question Box w/ buttons -->
-    <div class= "container">
-      <div id="question-container" class="hide">
-        <div id= "question">Question</div>
-        <div id= "anwsers-buttons" class="btn-grid">
-          <button class="btn">Answer A</button>
-          <button class="btn">Answer B</button>
-          <button class="btn">Answer C</button>
-          <button class="btn">Answer D</button>
-        </div>
-        <div class="controls">
-      
-      <!-- Next Button -->
-      <button id="next-btn class="next-btn btn hide">Next</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Timer <div id="timer"></div> -->
-    <!-- Error Message Box-->
-    <!-- Game Over Prompt w/ High Score-->
-
+    <link href="style.css" rel="stylesheet" />
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -68,6 +20,26 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-  </body>
+  </head>
 
+  <body>
+    <div class="controls">
+      <button id="start-btn" class="start-btn btn">Let's Go</button>
+    </div>
+
+    <!-- Question Box w/ buttons -->
+    <div class="container" <div id="question-container" class="hide">
+      <div id="question">Question</div>
+      <div id="answer-buttons" class="btn-grid">
+        <button class="btn">Answer A</button>
+        <button class="btn">Answer B</button>
+        <button class="btn">Answer C</button>
+        <button class="btn">Answer D</button>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="next-btn" class="next-btn btn hide">Next</button>
+    </div>
+  </body>
 </html>

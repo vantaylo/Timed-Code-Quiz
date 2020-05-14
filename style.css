@@ -1,0 +1,59 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: silver;
+}
+
+.container {
+  width: 800px;
+  max-width: 80%;
+  background-color: paleturquoise;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 0 10px 2px;
+}
+
+btn-grid {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.btn {
+  border: 1px solid;
+  border-color: white;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  outline: none;
+}
+
+.start-btn,
+.next-btn {
+  margin-right: 15px;
+  font-size: medium;
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hide {
+  display: none;
+}
