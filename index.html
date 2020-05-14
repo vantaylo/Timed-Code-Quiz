@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Timed Code Quiz</title>
     <link
       rel="stylesheet"
@@ -21,28 +23,34 @@
           height="30"
           class="d-inline-block align-top"
           alt=""
-        />
-        Timed Code Quiz
-      </a>
+        />Timed Code Quiz</a>
     </nav>
-
-    <div class="card text-center">
-      <div class="card-header"></div>
-      <div class="card-body">
-        <h5 class="card-title">Ready, Set,</h5>
-
-        <!-- Start Button -->
-        <a href="#" class="btn btn-primary">GO!</a>
-      </div>
-      <div class="card-footer text-muted"></div>
+    
+    <!-- Start Button -->
+    <div class="controls">
+       <button id="start-btn" class="start-btn btn">Let's Go</button>
     </div>
 
-    <!-- Timer -->
+    <!-- Question Box w/ buttons -->
+    <div class= "container">
+      <div id="question-container" class="hide">
+        <div id= "question">Question</div>
+        <div id= "anwsers-buttons" class="btn-grid">
+          <button class="btn">Answer A</button>
+          <button class="btn">Answer B</button>
+          <button class="btn">Answer C</button>
+          <button class="btn">Answer D</button>
+        </div>
+        <div class="controls">
+      
+      <!-- Next Button -->
+      <button id="next-btn class="next-btn btn hide">Next</button>
+        </div>
+      </div>
+    </div>
 
-    <!-- Question Box w/ Submit button -->
-
+    <!-- Timer <div id="timer"></div> -->
     <!-- Error Message Box-->
-
     <!-- Game Over Prompt w/ High Score-->
 
     <script
@@ -61,4 +69,5 @@
       crossorigin="anonymous"
     ></script>
   </body>
+
 </html>
