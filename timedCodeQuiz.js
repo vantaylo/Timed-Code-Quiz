@@ -1,7 +1,26 @@
 $(document).ready(function () {
   console.log("ready!");
+
+  var gameStart = false;
+  var gameFinished = false;
+  var currentQuestion = 0;
+
+  $("#start-btn").click(function () {
+    console.log("btn");
+    //flip game to started to be true
+
+    //start the timer
+
+    //render questions
+  });
 });
 
+//select elements variables
+var start = $("#start-btn");
+var quiz = $("#questions").onclick;
+var nextBtn = $("#next-btn").onclick;
+
+//Questions
 var questions = [
   {
     question:
@@ -32,3 +51,22 @@ var questions = [
     ],
   },
 ];
+
+// create some elements
+
+//render a question
+function askQuestions() {}
+
+//start quiz
+
+//counter rendering
+
+//check answer
+
+//answer is correct
+
+//answer is wrong
+
+// score rendered
+// calculate percent answered correctly
+// keep highscores
