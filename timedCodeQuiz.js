@@ -1,9 +1,17 @@
+//select elements variables
+var start = $("#start-btn");
+var quiz = $("#questions");
+var nextBtn = $("#next-btn");
+
+var gameStart = false;
+var gameFinished = false;
+var currentQuestion = 0;
+
+
 $(document).ready(function () {
   console.log("ready!");
 
-  var gameStart = false;
-  var gameFinished = false;
-  var currentQuestion = 0;
+  
 
   $("#start-btn").click(function () {
     console.log("btn");
@@ -20,17 +28,21 @@ $(document).ready(function () {
     console.log();
 
     //render questions
-    var firstQuestion = questions[currentQuestion];
+    // var firstQuestion = questions[currentQuestion];
+    showQuestion(currentQuestion);
   });
 });
 
-//select elements variables
-var start = $("#start-btn");
-var quiz = $("#questions");
-var nextBtn = $("#next-btn");
+
+
 
 var showQuestion = function (questionIndex) {
   var selectedQuestion = questions[questionIndex];
+
+  // set html text to show questions
+  $("#-question-box").setText(selectedQuestion.question)
+  $("#A-box").setText(selectedQuestion.answers.A.text)
+
 }
 
 //Questions
@@ -38,12 +50,12 @@ var questions = [
   {
     question:
       "What is the HTML tag under which one can write the JavaScript code?",
-    answers: [
-      { A: "<javascript>", correct: false },
-      { B: "<scripted>", correct: false },
-      { C: "<script>", correct: true },
-      { D: "<js>", correct: false },
-    ],
+    answers: {
+      A: {text: "<javascript>", correct: false},
+      B: {text: "<scripted>", correct: false },
+      C: {text: "<script>", correct: true },
+      D: {text: "<js>", correct: false },
+    },
   }
   {
   question:
