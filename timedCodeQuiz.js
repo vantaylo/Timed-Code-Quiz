@@ -13,6 +13,7 @@ $(document).ready(function () {
   var quizQuestion = $("#questions");
   var questionContainer = $("#question-container");
   var answerBtns = $("#answer-buttons");
+  var currentCorrectAns = " ";
 
   var gameStart = false;
   var gameFinished = false;
@@ -33,6 +34,14 @@ $(document).ready(function () {
     choiceB.text(selectedQuestion.answers.B.text);
     choiceC.text(selectedQuestion.answers.C.text);
     choiceD.text(selectedQuestion.answers.D.text);
+
+    var answerChoices = ["A", "B", "C", "D"];
+
+    for (var i = 0; i < selectedQuestion.answers.length; i++) {
+      if (selectedQuestion.answers[answerChoices[i]].correct) {
+        currentCorrectAns = answerChoices[i];
+      }
+    }
   }
 
   $("#start-btn").click(function () {
@@ -55,6 +64,8 @@ $(document).ready(function () {
 });
 
 //selecting an answer function
+function checkAnswer(choice) {}
+
 //answer is right
 //move to next question
 
@@ -78,23 +89,23 @@ var questions = [
   {
     question:
       "Which of the following is the correct syntax to display “CodingIsFun” in an alert box using JavaScript?",
-    answers: [
-      { text: "alertbox(“CodingIsFun”);", correct: false },
-      { text: "msg(“CodingIsFun”);", correct: false },
-      { text: "msgbox(“CodingIsFun”);", correct: false },
-      { text: "alert(“CodingIsFun”);", correct: true },
-    ],
+    answers: {
+      A: { text: "alertbox(“CodingIsFun”)", correct: false },
+      B: { text: "msg(“CodingIsFun”)", correct: false },
+      C: { text: "msgbox(“CodingIsFun”)", correct: false },
+      D: { text: "alert(“CodingIsFun”)", correct: true },
+    },
   },
 
   {
     question:
       "What is the correct syntax for referring to an external script called “main.js”?",
-    answers: [
-      { text: "<script src=”main.js”>", correct: true },
-      { text: "<script href=”main.js”>", correct: false },
-      { text: "<script ref=”main.js”>", correct: false },
-      { text: "<script name=”main.js”>", correct: false },
-    ],
+    answers: {
+      A: { text: "<script src=”main.js”>", correct: true },
+      B: { text: "<script href=”main.js”>", correct: false },
+      C: { text: "<script ref=”main.js”>", correct: false },
+      D: { text: "<script name=”main.js”>", correct: false },
+    },
   },
 ];
 
