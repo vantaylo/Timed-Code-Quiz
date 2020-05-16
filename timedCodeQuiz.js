@@ -49,6 +49,7 @@ $(document).ready(function () {
   var quizQuestion = $("#questions");
   var questionContainer = $("#question-container");
   var answerBtns = $("#answer-buttons");
+  var leaderboard = $("#scoreContainer");
   var currentCorrectAns = " ";
 
   var gameStart = false;
@@ -57,6 +58,7 @@ $(document).ready(function () {
   var currentSecs;
   var score = 0;
   var allowedSeconds = 10;
+  var timerCountdown;
 
   var choiceA = $("#choiceA");
   var choiceB = $("#choiceB");
@@ -75,6 +77,14 @@ $(document).ready(function () {
   choiceD.click(function () {
     checkAnswer("D");
   });
+
+  //Game is over
+  function gameOver() {
+    clearInterval(timerCountdown);
+    var userName = prompt("Enter your name on the leaderboard");
+
+    leaderboard.append("<li> " + userName + "score:" + score + " </li>");
+  }
 
   function showQuestion(questionIndex) {
     var selectedQuestion = questions[currentQuestion];
@@ -97,19 +107,22 @@ $(document).ready(function () {
     }
   }
 
-  function startTimer(startSecs) {
+  function startTimer(startSecs = 10, stop = false) {
     currentSecs = startSecs;
 
-    var timerCountdown = setInterval(function () {
-      $("#timer").text(currentSecs);
+    timerCountdown = setInterval(function () {
+      if (currentSecs >= 0) {
+        $("#timer").text(currentSecs);
+      }
       currentSecs--;
       console.log(currentSecs);
 
-      if (currentSecs === -1) {
+      if (currentSecs <= -1) {
         // if last question/gameover
         if (currentQuestion === questions.length - 1) {
           clearInterval(timerCountdown);
           console.log("gameover");
+          gameOver();
         } else {
           clearInterval(timerCountdown);
           startTimer(allowedSeconds);
@@ -129,10 +142,16 @@ $(document).ready(function () {
       //last answer
       if (currentQuestion === questions.length - 1) {
         console.log("score");
+        gameOver();
       } else {
         //move to next question
         currentQuestion++;
+        clearInterval(timerCountdown, true);
+        startTimer(allowedSeconds);
+
         showQuestion(currentQuestion);
+        score += currentSecs;
+        console.log("score:", score);
       }
     } else {
       //answer is wrong
@@ -156,5 +175,4 @@ $(document).ready(function () {
   });
 });
 
-//Game is over
 //every sec you dont use = 1pts

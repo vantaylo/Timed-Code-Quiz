@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Timed Code Quiz</title>
     <link href="style.css" rel="stylesheet" />
+
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -29,7 +30,7 @@
     </div>
 
     <!-- Question Box w/ buttons -->
-    <div class="container" <div id="container" class="hide">
+    <div class="container" id="container" class="hide">
       <div id="question-container"></div>
 
       <div id="answer-buttons" class="btn-grid">
@@ -58,12 +59,9 @@
       <button id="next-btn" class="next-btn btn hide">Next</button>
     </div>
 
-    <div id="scoreContainer" style="display: none;"></div>
+    <div id="scoreContainer"></div>
+    <ul class="list-group">
+      <p>Highscore</p>
+    </ul>
   </body>
-  <div class="leaderboard">
-    <p>High Scores</p>
-    <li>1st</li>
-    <li>2nd</li>
-    <li>3rd</li>
-  </div>
 </html>
