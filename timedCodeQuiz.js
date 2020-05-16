@@ -9,6 +9,42 @@
 //What should happen when I start
 $(document).ready(function () {
   console.log("ready!");
+  //Questions
+  var questions = [
+    {
+      question:
+        "What is the HTML tag under which one can write the JavaScript code?",
+      answers: {
+        A: { text: "<javascript>", correct: false },
+        B: { text: "<scripted>", correct: false },
+        C: { text: "<script>", correct: true },
+        D: { text: "<js>", correct: false },
+      },
+    },
+
+    {
+      question:
+        "Which of the following is the correct syntax to display “CodingIsFun” in an alert box using JavaScript?",
+      answers: {
+        A: { text: "alertbox(“CodingIsFun”)", correct: false },
+        B: { text: "msg(“CodingIsFun”)", correct: false },
+        C: { text: "msgbox(“CodingIsFun”)", correct: false },
+        D: { text: "alert(“CodingIsFun”)", correct: true },
+      },
+    },
+
+    {
+      question:
+        "What is the correct syntax for referring to an external script called “main.js”?",
+      answers: {
+        A: { text: "<script src=”main.js”>", correct: true },
+        B: { text: "<script href=”main.js”>", correct: false },
+        C: { text: "<script ref=”main.js”>", correct: false },
+        D: { text: "<script name=”main.js”>", correct: false },
+      },
+    },
+  ];
+
   var startBtn = $("#start-btn");
   var quizQuestion = $("#questions");
   var questionContainer = $("#question-container");
@@ -20,12 +56,25 @@ $(document).ready(function () {
   var currentQuestion = 0;
   var score = 0;
 
-  function showQuestion(questionIndex) {
-    var choiceA = $("#choiceA");
-    var choiceB = $("#choiceB");
-    var choiceC = $("#choiceC");
-    var choiceD = $("#choiceD");
+  var choiceA = $("#choiceA");
+  var choiceB = $("#choiceB");
+  var choiceC = $("#choiceC");
+  var choiceD = $("#choiceD");
 
+  choiceA.click(function () {
+    checkAnswer("A");
+  });
+  choiceB.click(function () {
+    checkAnswer("B");
+  });
+  choiceC.click(function () {
+    checkAnswer("C");
+  });
+  choiceD.click(function () {
+    checkAnswer("D");
+  });
+
+  function showQuestion(questionIndex) {
     var selectedQuestion = questions[currentQuestion];
     questionContainer.text(selectedQuestion.question);
     console.log("showQuestion");
@@ -35,12 +84,36 @@ $(document).ready(function () {
     choiceC.text(selectedQuestion.answers.C.text);
     choiceD.text(selectedQuestion.answers.D.text);
 
-    var answerChoices = ["A", "B", "C", "D"];
+    for (var i in selectedQuestion.answers) {
+      console.log(i);
+      console.log(selectedQuestion.answers[i]);
 
-    for (var i = 0; i < selectedQuestion.answers.length; i++) {
-      if (selectedQuestion.answers[answerChoices[i]].correct) {
-        currentCorrectAns = answerChoices[i];
+      if (selectedQuestion.answers[i].correct === true) {
+        currentCorrectAns = i;
+        console.log("correct answer found");
       }
+    }
+  }
+
+  function checkAnswer(choice) {
+    console.log("click");
+    console.log(choice);
+    console.log(currentCorrectAns);
+
+    if (choice === currentCorrectAns) {
+      //answer is right
+      if (currentQuestion === questions.length - 1) {
+        console.log("highscore");
+      }
+
+      //move to next question
+      currentQuestion++;
+      showQuestion(currentQuestion);
+    } else {
+      //answer is wrong
+      console.log("wrong!");
+
+      //deduct 2 seconds
     }
   }
 
@@ -50,68 +123,17 @@ $(document).ready(function () {
     gameStart = true;
 
     //start the timer
-    var timerId = setInterval(function () {
-      $("#timer").html(i);
-      i++;
-    }, 1000);
+    // var timerId = setInterval(function () {
+    //   $("#timer").html(i);
+    //   i++;
+    // }, 1000);
 
-    var sec = 20;
-    console.log();
+    // var sec = 20;
+    // console.log();
 
     //render questions
     showQuestion(currentQuestion);
   });
 });
 
-//selecting an answer function
-function checkAnswer(choice) {}
-
-//answer is right
-//move to next question
-
-//answer is wrong
-
 //Game is over
-
-//Questions
-var questions = [
-  {
-    question:
-      "What is the HTML tag under which one can write the JavaScript code?",
-    answers: {
-      A: { text: "<javascript>", correct: false },
-      B: { text: "<scripted>", correct: false },
-      C: { text: "<script>", correct: true },
-      D: { text: "<js>", correct: false },
-    },
-  },
-
-  {
-    question:
-      "Which of the following is the correct syntax to display “CodingIsFun” in an alert box using JavaScript?",
-    answers: {
-      A: { text: "alertbox(“CodingIsFun”)", correct: false },
-      B: { text: "msg(“CodingIsFun”)", correct: false },
-      C: { text: "msgbox(“CodingIsFun”)", correct: false },
-      D: { text: "alert(“CodingIsFun”)", correct: true },
-    },
-  },
-
-  {
-    question:
-      "What is the correct syntax for referring to an external script called “main.js”?",
-    answers: {
-      A: { text: "<script src=”main.js”>", correct: true },
-      B: { text: "<script href=”main.js”>", correct: false },
-      C: { text: "<script ref=”main.js”>", correct: false },
-      D: { text: "<script name=”main.js”>", correct: false },
-    },
-  },
-];
-
-// var showQuestion = function (questionIndex) {
-//   var selectedQuestion = questions[questionIndex];
-
-//   // set html text to show questions
-//   $("#-question-box").setText(selectedQuestion.question)
-//   $("#A-box").setText(selectedQuestion.answers.A.text)
