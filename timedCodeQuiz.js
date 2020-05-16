@@ -54,7 +54,9 @@ $(document).ready(function () {
   var gameStart = false;
   var gameFinished = false;
   var currentQuestion = 0;
+  var currentSecs;
   var score = 0;
+  var allowedSeconds = 10;
 
   var choiceA = $("#choiceA");
   var choiceB = $("#choiceB");
@@ -95,25 +97,49 @@ $(document).ready(function () {
     }
   }
 
+  function startTimer(startSecs) {
+    currentSecs = startSecs;
+
+    var timerCountdown = setInterval(function () {
+      $("#timer").text(currentSecs);
+      currentSecs--;
+      console.log(currentSecs);
+
+      if (currentSecs === -1) {
+        // if last question/gameover
+        if (currentQuestion === questions.length - 1) {
+          clearInterval(timerCountdown);
+          console.log("gameover");
+        } else {
+          clearInterval(timerCountdown);
+          startTimer(allowedSeconds);
+          showQuestion(currentQuestion++);
+        }
+      }
+    }, 1000);
+  }
+
   function checkAnswer(choice) {
     console.log("click");
     console.log(choice);
     console.log(currentCorrectAns);
 
+    //answer is right
     if (choice === currentCorrectAns) {
-      //answer is right
+      //last answer
       if (currentQuestion === questions.length - 1) {
-        console.log("highscore");
+        console.log("score");
+      } else {
+        //move to next question
+        currentQuestion++;
+        showQuestion(currentQuestion);
       }
-
-      //move to next question
-      currentQuestion++;
-      showQuestion(currentQuestion);
     } else {
       //answer is wrong
       console.log("wrong!");
 
       //deduct 2 seconds
+      currentSecs -= 2;
     }
   }
 
@@ -123,13 +149,7 @@ $(document).ready(function () {
     gameStart = true;
 
     //start the timer
-    // var timerId = setInterval(function () {
-    //   $("#timer").html(i);
-    //   i++;
-    // }, 1000);
-
-    // var sec = 20;
-    // console.log();
+    startTimer(allowedSeconds);
 
     //render questions
     showQuestion(currentQuestion);
@@ -137,3 +157,4 @@ $(document).ready(function () {
 });
 
 //Game is over
+//every sec you dont use = 1pts
